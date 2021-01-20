@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class TallerLiterario extends Actividad{
-	Set<Libro> libros;
+	private Set<Libro> libros;
 	
 	public TallerLiterario(Set<String> idiomas, Set<Libro> libros) {
 		super(idiomas);
@@ -26,7 +26,7 @@ public class TallerLiterario extends Actividad{
 	public Set<String> idiomas(){
 		Set<String> ret= new HashSet<String>();
 		for(Libro lib : this.libros) {
-			ret.add(lib.idioma);
+			ret.add(lib.idioma());
 		}
 	 return ret;
 	}
@@ -65,7 +65,7 @@ public class TallerLiterario extends Actividad{
 		//del taller literario son del mismo autor.
 		Set<String> ret = new HashSet<String>();
 		for(Libro lib : libros) {
-			ret.add(lib.autor);
+			ret.add(lib.autor());
 		}
 	 return ret.size() == 1;
 	}
