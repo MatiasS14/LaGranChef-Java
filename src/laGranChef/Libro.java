@@ -1,9 +1,9 @@
 package laGranChef;
 
 public class Libro {
-	Integer cantPag;
-	String idioma  ; 
-	String autor   ;
+	private Integer cantPag;
+	private String idioma  ; 
+	private String autor   ;
 	
 	public Libro(Integer cantPag, String idioma, String autor) {
 		this.cantPag = cantPag;
