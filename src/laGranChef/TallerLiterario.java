@@ -14,6 +14,10 @@ public class TallerLiterario extends Actividad{
 	public void agragarLibro(Libro libro) {
 		this.libros.add(libro);
 	}
+
+	public void eliminarLibro(Libro libro) {
+		this.libros.remove(libro);
+	}
 	
 	public Set<Libro> libros(){
 		return this.libros;
@@ -45,7 +49,7 @@ public class TallerLiterario extends Actividad{
 		return soc.idiomas().size() > 1;
 	}
 	
-	public Boolean tieneLibro500Paginas(Set<Libro> libros) {
+	private Boolean tieneLibro500Paginas(Set<Libro> libros) {
 		//prop: determina si el taller literario contiene
 		//almenos un libro con mas de 500 paginas.
 		Boolean ret = false;
@@ -56,7 +60,7 @@ public class TallerLiterario extends Actividad{
 	 return ret;
 	}
 	
-	public Boolean todosDelMismoAutor(Set<Libro> libros) {
+	private Boolean todosDelMismoAutor(Set<Libro> libros) {
 		//prop: determina si todos los libros 
 		//del taller literario son del mismo autor.
 		Set<String> ret = new HashSet<String>();
