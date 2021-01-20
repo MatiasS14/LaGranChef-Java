@@ -3,7 +3,7 @@ package laGranChef;
 import java.util.Set;
 
 public class ViajePlaya extends Actividad{
-	protected Integer largoPlaya;
+	private Integer largoPlaya;
 	
 	public ViajePlaya(Set<String> idiomas, Integer largo) {
 		super(idiomas);
