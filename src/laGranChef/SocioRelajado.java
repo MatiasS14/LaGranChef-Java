@@ -14,7 +14,7 @@ public class SocioRelajado extends Socio{
 	
 	protected Boolean hablaIdiomaAct(Actividad act) {
 		Integer cantIdiomas = 0;
-		for(String idiom : this.idiomas) {
+		for(String idiom : this.idiomas()) {
 			if(act.idiomas().contains(idiom)) {
 				cantIdiomas++;
 			}

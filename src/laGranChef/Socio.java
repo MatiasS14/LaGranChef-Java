@@ -3,10 +3,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Socio {
-	protected Set<Actividad> actividadesRealizadas = new HashSet<Actividad>();
-	protected Integer limiteActividades;
-	protected Integer edad;
-	protected Set<String> idiomas= new HashSet<String>();
+	private Set<Actividad> actividadesRealizadas = new HashSet<Actividad>();
+	private Integer limiteActividades;
+	private Integer edad;
+	private Set<String> idiomas= new HashSet<String>();
 	
 	public Socio(Integer limite, Integer edad, Set<String> idiomas) {
 		this.limiteActividades = limite ;
