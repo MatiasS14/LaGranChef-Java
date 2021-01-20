@@ -2,8 +2,8 @@ package laGranChef;
 import java.util.Set;
 
 public class SalidaTrekking extends Actividad{
-	Integer kilometros;
-	Integer diasDeSol;
+	private Integer kilometros;
+	private Integer diasDeSol;
 	
 	public SalidaTrekking (Set<String> idiomas, Integer kilometros, Integer diasDeSol) {
 		super(idiomas);
