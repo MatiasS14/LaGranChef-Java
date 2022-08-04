@@ -1,7 +1,6 @@
 package testLaGranChef;
 import java.util.Set;
 import java.util.HashSet;
-import laGranChef.*;
 import laGranChef.actividades.Actividad;
 import laGranChef.actividades.ClaseGimnasia;
 import laGranChef.actividades.SalidaTrekking;

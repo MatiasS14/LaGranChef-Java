@@ -1,12 +1,13 @@
 package laGranChef.actividades;
 import java.util.Set;
 
+import laGranChef.actividades.borradores.BorradorClaseGimnasia;
 import laGranChef.socios.Socio;
 
 public class ClaseGimnasia extends Actividad{
 	
-	public ClaseGimnasia(Set<String> idiomas) {
-		super(idiomas);		
+	public ClaseGimnasia(BorradorClaseGimnasia claseGimnasia) {
+		super(claseGimnasia.idiomas);		
 	}
 	
 	public Set<String> idiomas() {
