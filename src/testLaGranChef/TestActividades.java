@@ -8,6 +8,7 @@ import laGranChef.actividades.borradores.BorradorClaseGimnasia;
 import laGranChef.actividades.borradores.BorradorLibro;
 import laGranChef.actividades.borradores.BorradorSalidaTrekking;
 import laGranChef.actividades.borradores.BorradorTallerLiterario;
+import laGranChef.actividades.borradores.BorradorViajeCiudad;
 import laGranChef.actividades.borradores.BorradorViajePlaya;
 import laGranChef.actividades.errores.ErrorLibro;
 import laGranChef.actividades.errores.ErrorSalidaTrekking;
@@ -32,9 +33,15 @@ class TestActividades {
 	public Set<String> idiomas2    ;
 	public Set<String> idiomas3    ;
 	public Set<String> idiomas4    ;
+				//Borrador viaje a ciudad
+	BorradorViajeCiudad borradorViajeACiudad1;
+	BorradorViajeCiudad borradorViajeACiudad2;
 				//Viaje a ciudad	
 	Actividad viajeACiudad1;
 	Actividad viajeACiudad2;
+				//Borrador viaje a ciudad tropical
+	BorradorViajeCiudad borradorViajeACiudadTropical1;
+	BorradorViajeCiudad borradorViajeACiudadTropical2;
 				//Viaje a ciudad tropical
 	Actividad viajeCiudadTropical1;
 	Actividad viajeCiudadTropical2;
@@ -164,12 +171,18 @@ class TestActividades {
 		
 		
 		//Actividades de diferentes tipos y caracteristicas
+					//Borrador viaje a ciudad
+		borradorViajeACiudad1 = new BorradorViajeCiudad(idiomas1,4);
+		borradorViajeACiudad2 = new BorradorViajeCiudad(idiomas4, 10);
 					//Viaje a ciudad
-		viajeACiudad1 = new ViajeACiudad(idiomas1,4) ;
-		viajeACiudad2 = new ViajeACiudad(idiomas4, 10);
+		viajeACiudad1 = new ViajeACiudad(borradorViajeACiudad1) ;
+		viajeACiudad2 = new ViajeACiudad(borradorViajeACiudad2) ;
+					//Borrador viaje a ciudad tropical
+		borradorViajeACiudadTropical1 = new BorradorViajeCiudad(idiomas1, 3);
+		borradorViajeACiudadTropical2 = new BorradorViajeCiudad(idiomas4, 5);
 					//Viaje a ciudad tropical
-		viajeCiudadTropical1 = new ViajeCiudadTropical(idiomas1, 3);
-		viajeCiudadTropical2 = new ViajeCiudadTropical(idiomas4, 5);
+		viajeCiudadTropical1 = new ViajeCiudadTropical(borradorViajeACiudadTropical1);
+		viajeCiudadTropical2 = new ViajeCiudadTropical(borradorViajeACiudadTropical2);
 					//Borrador viaje playa
 		borradorViajePlaya1 = new BorradorViajePlaya(idiomas1, 1200);
 		borradorViajePlaya2 = new BorradorViajePlaya(idiomas2, 5000);

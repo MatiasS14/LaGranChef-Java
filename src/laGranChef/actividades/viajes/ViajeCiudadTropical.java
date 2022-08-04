@@ -1,9 +1,11 @@
 package laGranChef.actividades.viajes;
-import java.util.Set;
+
+import laGranChef.actividades.borradores.BorradorViajeCiudad;
+import laGranChef.actividades.errores.ErrorViaje;
 
 public class ViajeCiudadTropical extends ViajeACiudad{
-	public ViajeCiudadTropical (Set<String> idiomas, Integer cantAtrac) {
-		super(idiomas, cantAtrac);
+	public ViajeCiudadTropical (BorradorViajeCiudad viaje) throws ErrorViaje{
+		super(viaje);
 	}
 
 	public Boolean sirveParaBroncear() {
