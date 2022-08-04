@@ -1,13 +1,13 @@
 package laGranChef.socios;
 
-import java.util.Set;
-
 import laGranChef.actividades.Actividad;
+import laGranChef.actividades.borradores.BorradorSocio;
+import laGranChef.actividades.errores.ErrorSocio;
 
 public class SocioRelajado extends Socio{
 
-	public SocioRelajado(Integer limite, Integer edad, Set<String> idiomas) {
-		super(limite, edad, idiomas);
+	public SocioRelajado(BorradorSocio socio) throws ErrorSocio{
+		super(socio);
 	}
 	
 	public Boolean leAtrae(Actividad act) {

@@ -3,6 +3,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import laGranChef.actividades.Actividad;
+import laGranChef.actividades.borradores.BorradorSocio;
+import laGranChef.actividades.errores.ErrorSocio;
 
 public class Socio {
 	private Set<Actividad> actividadesRealizadas = new HashSet<Actividad>();
@@ -10,10 +12,19 @@ public class Socio {
 	private Integer edad;
 	private Set<String> idiomas= new HashSet<String>();
 	
-	public Socio(Integer limite, Integer edad, Set<String> idiomas) {
-		this.limiteActividades = limite ;
-		this.edad              = edad   ;
-		this.idiomas 		   = idiomas;
+	public Socio(BorradorSocio socio) throws ErrorSocio{
+		verificarSocio(socio);
+		this.limiteActividades = socio.limiteActividades ;
+		this.edad              = socio.edad   ;
+		this.idiomas 		   = socio.idiomas;
+	}
+	
+	private void verificarSocio(BorradorSocio socio) throws ErrorSocio{
+		if(socio.edad == 0 ) {throw new ErrorSocio("El socio debe tener al menos 1 año");}
+		if(socio.limiteActividades < 1 ) {
+			throw new ErrorSocio("El socio debe tener limitie minimo de 1 actividad");
+		}
+		if(socio.idiomas.isEmpty()) {throw new ErrorSocio("El socio debe saber al menos 1 idioma");}
 	}
 	
 	public Set<String> idiomas(){
@@ -51,11 +62,11 @@ public class Socio {
 		return true;
 	}
 	
-	public void registrarActividad(Actividad act) {
+	public void registrarActividad(Actividad act) throws ErrorSocio{
 		if(this.limiteActividades > this.actividadesRealizadas.size()) {
 			this.actividadesRealizadas.add(act);
 		}else {
-			throw new RuntimeException("Exede el limite de actividades posibles");
+			throw new ErrorSocio("Exede el limite de actividades posibles");
 		}
 	}
 	

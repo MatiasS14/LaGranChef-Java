@@ -7,11 +7,13 @@ import laGranChef.actividades.SalidaTrekking;
 import laGranChef.actividades.borradores.BorradorClaseGimnasia;
 import laGranChef.actividades.borradores.BorradorLibro;
 import laGranChef.actividades.borradores.BorradorSalidaTrekking;
+import laGranChef.actividades.borradores.BorradorSocio;
 import laGranChef.actividades.borradores.BorradorTallerLiterario;
 import laGranChef.actividades.borradores.BorradorViajeCiudad;
 import laGranChef.actividades.borradores.BorradorViajePlaya;
 import laGranChef.actividades.errores.ErrorLibro;
 import laGranChef.actividades.errores.ErrorSalidaTrekking;
+import laGranChef.actividades.errores.ErrorSocio;
 import laGranChef.actividades.errores.ErrorViaje;
 import laGranChef.actividades.tallerLiterario.Libro;
 import laGranChef.actividades.tallerLiterario.TallerLiterario;
@@ -99,13 +101,18 @@ class TestActividades {
 	public Set<Libro> libros2;
 	public Set<Libro> libros3;
 	
+	//Borradores socios
+	public BorradorSocio borradorSoc1;
+	public BorradorSocio borradorSoc2;
+	public BorradorSocio borradorSoc3;
+	public BorradorSocio borradorSoc4;
 	//Socios
 	public Socio soc1;
 	public Socio soc2;
 	public Socio soc3;
 	public Socio soc4;
 	@BeforeEach
-	void setUp() throws ErrorSalidaTrekking, ErrorLibro, ErrorViaje{
+	void setUp() throws ErrorSalidaTrekking, ErrorLibro, ErrorViaje, ErrorSocio{
 		//coleccion de idiomas con solo un idioma
 		idiomas1= new HashSet<String>();
 		idiomas1.add("Español")        ;
@@ -210,11 +217,16 @@ class TestActividades {
 		tallerLiterario2 = new TallerLiterario(borradorTallerLiterario2);
 		tallerLiterario3 = new TallerLiterario(borradorTallerLiterario3);
 		
+		//Borrador socio
+		borradorSoc1 = new BorradorSocio(4, 40, idiomas2);
+		borradorSoc2 = new BorradorSocio(6, 25, idiomas4);
+		borradorSoc3= new BorradorSocio(8, 30, idiomas3)  ;
+		borradorSoc4 = new BorradorSocio(3, 20, idiomas1);
 		//Inicializacion de socios
-		soc1 = new SocioTranquilo(4, 40, idiomas2);
-		soc2 = new SocioCoherente(6, 25, idiomas4);
-		soc3= new SocioRelajado(8, 30, idiomas3)  ;
-		soc4 = new SocioTranquilo(3, 20, idiomas1);
+		soc1 = new SocioTranquilo(borradorSoc1);
+		soc2 = new SocioCoherente(borradorSoc2);
+		soc3= new SocioRelajado(borradorSoc3)  ;
+		soc4 = new SocioTranquilo(borradorSoc4);
 	}
 	@Test
 	void testViajesPlaya() {
@@ -311,19 +323,23 @@ class TestActividades {
 		assertTrue(tallerLiterario3.esInteresante());
 				
 	}
-
+	
 	@Test
-	void testSocio() {
+	void testSocioSuperaLimiteActividades() throws ErrorSocio {
 		//Verifica si se lanza el aviso de exceso de actividades
-		try{
-			soc4.registrarActividad(viajeACiudad1);
-			soc4.registrarActividad(viajeCiudadTropical1);
-			soc4.registrarActividad(claseGym1);
-			soc4.registrarActividad(salidaTrekking2);
-			soc4.registrarActividad(viajePlaya1);
-		}catch(RuntimeException e) {
-			System.out.print("El socio soc4"+" " +e);			
-		}
+				try{
+					soc4.registrarActividad(viajeACiudad1);
+					soc4.registrarActividad(viajeCiudadTropical1);
+					soc4.registrarActividad(claseGym1);
+					soc4.registrarActividad(salidaTrekking2);
+					soc4.registrarActividad(viajePlaya1);
+				}catch(ErrorSocio e) {
+					System.out.print("El socio soc4"+" " +e);			
+				}
+	}
+	@Test
+	void testSocio() throws ErrorSocio{
+		
 		//verifica que el socio soc1 es adorador del sol
 		soc1.registrarActividad(viajePlaya1);
 		soc1.registrarActividad(viajePlaya2);
