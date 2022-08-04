@@ -4,14 +4,15 @@ import java.util.HashSet;
 import java.util.Set;
 
 import laGranChef.actividades.Actividad;
+import laGranChef.actividades.borradores.BorradorTallerLiterario;
 import laGranChef.socios.Socio;
 
 public class TallerLiterario extends Actividad{
 	private Set<Libro> libros;
 	
-	public TallerLiterario(Set<String> idiomas, Set<Libro> libros) {
-		super(idiomas);
-		this.libros = libros;
+	public TallerLiterario(BorradorTallerLiterario taller) {
+		super(taller.idiomas);
+		this.libros = taller.libros;
 	}
 	
 	public void agragarLibro(Libro libro) {

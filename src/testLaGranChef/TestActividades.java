@@ -5,8 +5,13 @@ import laGranChef.actividades.Actividad;
 import laGranChef.actividades.ClaseGimnasia;
 import laGranChef.actividades.SalidaTrekking;
 import laGranChef.actividades.borradores.BorradorClaseGimnasia;
+import laGranChef.actividades.borradores.BorradorLibro;
 import laGranChef.actividades.borradores.BorradorSalidaTrekking;
+import laGranChef.actividades.borradores.BorradorTallerLiterario;
+import laGranChef.actividades.borradores.BorradorViajePlaya;
+import laGranChef.actividades.errores.ErrorLibro;
 import laGranChef.actividades.errores.ErrorSalidaTrekking;
+import laGranChef.actividades.errores.ErrorViaje;
 import laGranChef.actividades.tallerLiterario.Libro;
 import laGranChef.actividades.tallerLiterario.TallerLiterario;
 import laGranChef.actividades.viajes.ViajeACiudad;
@@ -33,6 +38,9 @@ class TestActividades {
 				//Viaje a ciudad tropical
 	Actividad viajeCiudadTropical1;
 	Actividad viajeCiudadTropical2;
+				//Borrador viaje playa
+	BorradorViajePlaya borradorViajePlaya1;
+	BorradorViajePlaya borradorViajePlaya2;
 				//Viaje a la playa
 	Actividad viajePlaya1; 
 	Actividad viajePlaya2;
@@ -48,10 +56,25 @@ class TestActividades {
 				//clase de gimnasia
 	Actividad claseGym1;
 	Actividad claseGym2;
+				//Borrador taller literario
+	BorradorTallerLiterario borradorTallerLiterario1;
+	BorradorTallerLiterario borradorTallerLiterario2;
+	BorradorTallerLiterario borradorTallerLiterario3;
 				//taller literario
 	Actividad tallerLiterario1;
 	Actividad tallerLiterario2;
 	Actividad tallerLiterario3;
+	
+	//Borrador libro
+	BorradorLibro borradorLibro1;
+	BorradorLibro borradorLibro2;
+	BorradorLibro borradorLibro3;
+	BorradorLibro borradorLibro4;
+	BorradorLibro borradorLibro5;
+	BorradorLibro borradorLibro6;
+	BorradorLibro borradorLibro7;
+	BorradorLibro borradorLibro8;
+	BorradorLibro borradorLibro9;
 	
 	//Libros
 	public Libro libro1;
@@ -75,7 +98,7 @@ class TestActividades {
 	public Socio soc3;
 	public Socio soc4;
 	@BeforeEach
-	void setUp() throws ErrorSalidaTrekking{
+	void setUp() throws ErrorSalidaTrekking, ErrorLibro, ErrorViaje{
 		//coleccion de idiomas con solo un idioma
 		idiomas1= new HashSet<String>();
 		idiomas1.add("Español")        ;
@@ -94,16 +117,27 @@ class TestActividades {
 		idiomas4.add("Frances")        ;
 		idiomas4.add("Portugues")      ;
 		
+		//Borradores de libros
+		borradorLibro1 = new BorradorLibro(400, "Español", "Borges");
+		borradorLibro2 = new BorradorLibro(400, "Ingles", "Bradbury");
+		borradorLibro3 = new BorradorLibro(300, "Frances", "Pepe");
+		borradorLibro4 = new BorradorLibro(150, "Español", "Borges");
+		borradorLibro5 = new BorradorLibro(200, "Español", "Borges");
+		borradorLibro6 = new BorradorLibro(1000, "Portugues", "Ronaldiño");
+		borradorLibro7 = new BorradorLibro(400, "Español", "San Martin");
+		borradorLibro8 = new BorradorLibro(300, "Ingles", "Obama");
+		borradorLibro9 = new BorradorLibro(200, "Ingles", "Spilberg");
+
 		//Inicializacion de instancias de libros
-		libro1 = new Libro(400, "Español", "Borges");
-		libro2 = new Libro(400, "Ingles", "Bradbury");
-		libro3 = new Libro(300, "Frances", "Pepe");
-		libro4 = new Libro(150, "Español", "Borges");
-		libro5 = new Libro(200, "Español", "Borges");
-		libro6 = new Libro(1000, "Portugues", "Ronaldiño");
-		libro7 = new Libro(400, "Español", "San Martin");
-		libro8 = new Libro(300, "Ingles", "Obama");
-		libro9 = new Libro(200, "Ingles", "Spilberg");
+		libro1 = new Libro(borradorLibro1);
+		libro2 = new Libro(borradorLibro2);
+		libro3 = new Libro(borradorLibro3);
+		libro4 = new Libro(borradorLibro4);
+		libro5 = new Libro(borradorLibro5);
+		libro6 = new Libro(borradorLibro6);
+		libro7 = new Libro(borradorLibro7);
+		libro8 = new Libro(borradorLibro8);
+		libro9 = new Libro(borradorLibro9);
 		
 		//colecciones de libros
 		libros1 = new HashSet<Libro>();
@@ -136,9 +170,12 @@ class TestActividades {
 					//Viaje a ciudad tropical
 		viajeCiudadTropical1 = new ViajeCiudadTropical(idiomas1, 3);
 		viajeCiudadTropical2 = new ViajeCiudadTropical(idiomas4, 5);
+					//Borrador viaje playa
+		borradorViajePlaya1 = new BorradorViajePlaya(idiomas1, 1200);
+		borradorViajePlaya2 = new BorradorViajePlaya(idiomas2, 5000);
 					//Viaje a la playa
-		viajePlaya1= new ViajePlaya(idiomas1, 1200); 
-		viajePlaya2= new ViajePlaya(idiomas2, 5000);
+		viajePlaya1= new ViajePlaya(borradorViajePlaya1); 
+		viajePlaya2= new ViajePlaya(borradorViajePlaya2);
 					//Borrador salida trekking
 		borradorSalidaTrekking1 = new BorradorSalidaTrekking(idiomas1, 60, 120);
 		borradorSalidaTrekking2 = new BorradorSalidaTrekking(idiomas3, 200, 260);
@@ -151,10 +188,14 @@ class TestActividades {
 					//clase de gimnasia
 		claseGym1= new ClaseGimnasia(borradorClaseGym1);
 		claseGym2= new ClaseGimnasia(borradorClaseGym2);
+					//borrador taller literario
+		borradorTallerLiterario1 = new BorradorTallerLiterario(idiomas1, libros1);
+		borradorTallerLiterario2 = new BorradorTallerLiterario(idiomas2,libros2);
+		borradorTallerLiterario3 = new BorradorTallerLiterario(idiomas4,libros3);
 					//taller literario
-		tallerLiterario1 = new TallerLiterario(idiomas1, libros1);
-		tallerLiterario2 = new TallerLiterario(idiomas2,libros2);
-		tallerLiterario3 = new TallerLiterario(idiomas4,libros3);
+		tallerLiterario1 = new TallerLiterario(borradorTallerLiterario1);
+		tallerLiterario2 = new TallerLiterario(borradorTallerLiterario2);
+		tallerLiterario3 = new TallerLiterario(borradorTallerLiterario3);
 		
 		//Inicializacion de socios
 		soc1 = new SocioTranquilo(4, 40, idiomas2);
