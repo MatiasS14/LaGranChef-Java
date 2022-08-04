@@ -1,14 +1,23 @@
 package laGranChef.actividades;
-import java.util.Set;
+
+import laGranChef.actividades.borradores.BorradorSalidaTrekking;
+import laGranChef.actividades.errores.ErrorSalidaTrekking;
 
 public class SalidaTrekking extends Actividad{
 	private Integer kilometros;
 	private Integer diasDeSol;
 	
-	public SalidaTrekking (Set<String> idiomas, Integer kilometros, Integer diasDeSol) {
-		super(idiomas);
-		this.kilometros = kilometros;
-		this.diasDeSol  = diasDeSol;
+	public SalidaTrekking (BorradorSalidaTrekking salidaTrekking) throws ErrorSalidaTrekking{
+		super(salidaTrekking.idiomas);
+		verificarSalida(salidaTrekking);
+		this.kilometros = salidaTrekking.kilometros;
+		this.diasDeSol  = salidaTrekking.diasDeSol;
+	}
+
+	private void verificarSalida(BorradorSalidaTrekking salida)throws ErrorSalidaTrekking {
+		if(salida.kilometros == 1 || salida.kilometros == null) {
+			throw new ErrorSalidaTrekking("La salida debe tener mas de 0km");
+		}
 	}
 	
 	public Boolean implicaEsfuerzo() {

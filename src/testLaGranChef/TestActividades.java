@@ -4,6 +4,9 @@ import java.util.HashSet;
 import laGranChef.actividades.Actividad;
 import laGranChef.actividades.ClaseGimnasia;
 import laGranChef.actividades.SalidaTrekking;
+import laGranChef.actividades.borradores.BorradorClaseGimnasia;
+import laGranChef.actividades.borradores.BorradorSalidaTrekking;
+import laGranChef.actividades.errores.ErrorSalidaTrekking;
 import laGranChef.actividades.tallerLiterario.Libro;
 import laGranChef.actividades.tallerLiterario.TallerLiterario;
 import laGranChef.actividades.viajes.ViajeACiudad;
@@ -33,9 +36,15 @@ class TestActividades {
 				//Viaje a la playa
 	Actividad viajePlaya1; 
 	Actividad viajePlaya2;
+				//borrador salida trekking
+	BorradorSalidaTrekking borradorSalidaTrekking1;
+	BorradorSalidaTrekking borradorSalidaTrekking2;
 				//Salida de trekking
 	Actividad salidaTrekking1;
 	Actividad salidaTrekking2;
+				//borrador clase gimnasia
+	BorradorClaseGimnasia borradorClaseGym1;
+	BorradorClaseGimnasia borradorClaseGym2;
 				//clase de gimnasia
 	Actividad claseGym1;
 	Actividad claseGym2;
@@ -66,7 +75,7 @@ class TestActividades {
 	public Socio soc3;
 	public Socio soc4;
 	@BeforeEach
-	void setUp(){
+	void setUp() throws ErrorSalidaTrekking{
 		//coleccion de idiomas con solo un idioma
 		idiomas1= new HashSet<String>();
 		idiomas1.add("Español")        ;
@@ -130,12 +139,18 @@ class TestActividades {
 					//Viaje a la playa
 		viajePlaya1= new ViajePlaya(idiomas1, 1200); 
 		viajePlaya2= new ViajePlaya(idiomas2, 5000);
+					//Borrador salida trekking
+		borradorSalidaTrekking1 = new BorradorSalidaTrekking(idiomas1, 60, 120);
+		borradorSalidaTrekking2 = new BorradorSalidaTrekking(idiomas3, 200, 260);
 					//Salida de trekking
-		salidaTrekking1= new SalidaTrekking(idiomas1, 60, 120) ;
-		salidaTrekking2= new SalidaTrekking(idiomas3, 200, 260);
+		salidaTrekking1= new SalidaTrekking(borradorSalidaTrekking1);
+		salidaTrekking2= new SalidaTrekking(borradorSalidaTrekking2);
+					//Borrador clase de gimnasia
+		borradorClaseGym1 = new BorradorClaseGimnasia(idiomas1);
+		borradorClaseGym2 = new BorradorClaseGimnasia(idiomas2);
 					//clase de gimnasia
-		claseGym1= new ClaseGimnasia(idiomas1);
-		claseGym2= new ClaseGimnasia(idiomas2);
+		claseGym1= new ClaseGimnasia(borradorClaseGym1);
+		claseGym2= new ClaseGimnasia(borradorClaseGym2);
 					//taller literario
 		tallerLiterario1 = new TallerLiterario(idiomas1, libros1);
 		tallerLiterario2 = new TallerLiterario(idiomas2,libros2);
