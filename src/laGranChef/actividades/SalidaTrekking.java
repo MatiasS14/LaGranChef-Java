@@ -1,4 +1,4 @@
-package laGranChef;
+package laGranChef.actividades;
 import java.util.Set;
 
 public class SalidaTrekking extends Actividad{

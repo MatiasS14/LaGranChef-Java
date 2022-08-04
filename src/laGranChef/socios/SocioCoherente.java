@@ -1,6 +1,8 @@
-package laGranChef;
+package laGranChef.socios;
 
 import java.util.Set;
+
+import laGranChef.actividades.Actividad;
 
 public class SocioCoherente extends Socio{
 	public SocioCoherente(Integer limite, Integer edad, Set<String> idiomas) {

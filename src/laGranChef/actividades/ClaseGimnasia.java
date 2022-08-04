@@ -1,5 +1,7 @@
-package laGranChef;
+package laGranChef.actividades;
 import java.util.Set;
+
+import laGranChef.socios.Socio;
 
 public class ClaseGimnasia extends Actividad{
 	

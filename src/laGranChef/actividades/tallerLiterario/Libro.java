@@ -1,4 +1,4 @@
-package laGranChef;
+package laGranChef.actividades.tallerLiterario;
 
 public class Libro {
 	private Integer cantPag;

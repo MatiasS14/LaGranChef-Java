@@ -1,5 +1,7 @@
-package laGranChef;
+package laGranChef.actividades.viajes;
 import java.util.Set;
+
+import laGranChef.actividades.Actividad;
 
 public class ViajeACiudad extends Actividad{
 	protected Integer cantAtracciones;

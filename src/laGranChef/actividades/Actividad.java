@@ -1,5 +1,7 @@
-package laGranChef;
+package laGranChef.actividades;
 import java.util.Set;
+
+import laGranChef.socios.Socio;
 
 public abstract class Actividad {
 	protected Set<String> idiomas;

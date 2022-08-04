@@ -1,6 +1,8 @@
-package laGranChef;
+package laGranChef.socios;
 import java.util.HashSet;
 import java.util.Set;
+
+import laGranChef.actividades.Actividad;
 
 public class Socio {
 	private Set<Actividad> actividadesRealizadas = new HashSet<Actividad>();

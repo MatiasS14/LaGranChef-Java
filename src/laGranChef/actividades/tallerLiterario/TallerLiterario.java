@@ -1,7 +1,10 @@
-package laGranChef;
+package laGranChef.actividades.tallerLiterario;
 
 import java.util.HashSet;
 import java.util.Set;
+
+import laGranChef.actividades.Actividad;
+import laGranChef.socios.Socio;
 
 public class TallerLiterario extends Actividad{
 	private Set<Libro> libros;

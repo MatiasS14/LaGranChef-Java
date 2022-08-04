@@ -1,4 +1,4 @@
-package laGranChef;
+package laGranChef.actividades.viajes;
 import java.util.Set;
 
 public class ViajeCiudadTropical extends ViajeACiudad{
